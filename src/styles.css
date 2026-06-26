@@ -140,11 +140,7 @@
   box-shadow: 0 0 0 4px rgba(190, 242, 100, 0.08);
   background: rgba(9, 9, 11, 0.85);
 }
-  background: linear-gradient(135deg, #ecfccb 0%, #bef264 50%, #84cc16 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
+
 
 @layer utilities {
   @keyframes aurora {
