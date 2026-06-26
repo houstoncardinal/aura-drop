@@ -123,6 +123,29 @@
   color: transparent;
 }
 
+@utility vault-input {
+  width: 100%;
+  border-radius: 0.625rem;
+  border: 1px solid #27272a;
+  background: rgba(9, 9, 11, 0.6);
+  padding: 0.85rem 1rem;
+  font-size: 0.875rem;
+  color: #f4f4f5;
+  transition: all 0.2s ease;
+}
+.vault-input::placeholder { color: #52525b; }
+.vault-input:focus {
+  outline: none;
+  border-color: rgba(190, 242, 100, 0.5);
+  box-shadow: 0 0 0 4px rgba(190, 242, 100, 0.08);
+  background: rgba(9, 9, 11, 0.85);
+}
+  background: linear-gradient(135deg, #ecfccb 0%, #bef264 50%, #84cc16 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 @layer utilities {
   @keyframes aurora {
     0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.5; }
