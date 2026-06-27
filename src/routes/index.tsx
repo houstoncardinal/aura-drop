@@ -89,10 +89,14 @@ function VaultPage() {
     <main className="relative min-h-screen overflow-hidden bg-zinc-950 text-zinc-100">
       {/* Atmospheric background */}
       <div className="pointer-events-none fixed inset-0 z-0">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,#0a1a14_0%,#050a08_55%,#020503_100%)]" />
+        <div className="grid-pattern animate-drift absolute inset-0" />
+        <div className="dot-pattern absolute inset-0 opacity-60" />
         <div className="noise-bg absolute inset-0" />
-        <div className="absolute -top-1/4 -left-1/4 h-[60vmax] w-[60vmax] animate-aurora rounded-full bg-[radial-gradient(circle_at_center,rgba(190,242,100,0.18),transparent_60%)] blur-3xl" />
-        <div className="absolute -bottom-1/4 -right-1/4 h-[55vmax] w-[55vmax] animate-aurora-2 rounded-full bg-[radial-gradient(circle_at_center,rgba(132,204,22,0.12),transparent_60%)] blur-3xl" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_0%,#09090b_85%)]" />
+        <div className="absolute -top-1/4 -left-1/4 h-[60vmax] w-[60vmax] animate-aurora rounded-full bg-[radial-gradient(circle_at_center,rgba(52,211,153,0.22),transparent_60%)] blur-3xl" />
+        <div className="absolute -bottom-1/4 -right-1/4 h-[55vmax] w-[55vmax] animate-aurora-2 rounded-full bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.18),transparent_60%)] blur-3xl" />
+        <div className="absolute top-1/3 left-1/2 h-[40vmax] w-[40vmax] -translate-x-1/2 animate-aurora rounded-full bg-[radial-gradient(circle_at_center,rgba(110,231,183,0.10),transparent_65%)] blur-3xl" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_0%,rgba(5,10,8,0.6)_70%,#050a08_100%)]" />
       </div>
 
       <Nav />
@@ -129,7 +133,7 @@ function Nav() {
       </div>
       <a
         href="#submit"
-        className="hidden rounded-full bg-zinc-100 px-5 py-2 text-xs font-semibold uppercase tracking-wider text-zinc-950 transition-all hover:bg-accent hover:shadow-[0_0_30px_-4px_rgba(190,242,100,0.7)] md:inline-flex"
+        className="hidden rounded-full bg-zinc-100 px-5 py-2 text-xs font-semibold uppercase tracking-wider text-zinc-950 transition-all hover:bg-accent hover:shadow-[0_0_30px_-4px_rgba(52,211,153,0.7)] md:inline-flex"
       >
         Submit
       </a>
@@ -166,7 +170,7 @@ function Hero() {
           <div className="flex flex-wrap items-center gap-6 pt-2">
             <a
               href="#submit"
-              className="group relative inline-flex items-center gap-3 rounded-full bg-accent px-7 py-4 font-display text-sm font-semibold uppercase tracking-wider text-zinc-950 accent-glow transition-all hover:scale-[1.02] hover:shadow-[0_0_50px_-4px_rgba(190,242,100,0.8)]"
+              className="group relative inline-flex items-center gap-3 rounded-full bg-accent px-7 py-4 font-display text-sm font-semibold uppercase tracking-wider text-zinc-950 accent-glow transition-all hover:scale-[1.02] hover:shadow-[0_0_50px_-4px_rgba(52,211,153,0.8)]"
             >
               Submit your track
               <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -284,7 +288,7 @@ function SubmissionWizard() {
               type="button"
               onClick={next}
               disabled={!stepValid}
-              className="group relative flex-1 overflow-hidden rounded-full bg-accent px-6 py-4 font-display text-sm font-semibold uppercase tracking-wider text-zinc-950 transition-all hover:shadow-[0_0_40px_-6px_rgba(190,242,100,0.8)] disabled:cursor-not-allowed disabled:bg-zinc-800 disabled:text-zinc-600 disabled:shadow-none"
+              className="group relative flex-1 overflow-hidden rounded-full bg-accent px-6 py-4 font-display text-sm font-semibold uppercase tracking-wider text-zinc-950 transition-all hover:shadow-[0_0_40px_-6px_rgba(52,211,153,0.8)] disabled:cursor-not-allowed disabled:bg-zinc-800 disabled:text-zinc-600 disabled:shadow-none"
             >
               <span className="relative z-10 flex items-center justify-center gap-2">
                 {step === 3 ? "Deposit into Vault" : "Continue"}
@@ -406,7 +410,7 @@ function StepTrack({
                 onClick={() => update("genre", g)}
                 className={`rounded-lg border px-3 py-2.5 text-left text-xs font-medium transition-all ${
                   active
-                    ? "border-accent bg-accent/10 text-accent shadow-[0_0_24px_-8px_rgba(190,242,100,0.6)]"
+                    ? "border-accent bg-accent/10 text-accent shadow-[0_0_24px_-8px_rgba(52,211,153,0.6)]"
                     : "border-zinc-800 bg-zinc-900/50 text-zinc-400 hover:border-zinc-700 hover:text-zinc-200"
                 }`}
               >
