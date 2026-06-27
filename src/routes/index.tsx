@@ -1,8 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useRef, useState, type FormEvent } from "react";
-import curatorMarcus from "@/assets/curator-marcus.jpg";
-import curatorElena from "@/assets/curator-elena.jpg";
-import curatorJulian from "@/assets/curator-julian.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -11,13 +8,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Drop your track into The Vault. Curators behind Drake, SZA, The Weeknd and more review every submission within 48 hours.",
+          "Drop your track into The Vault. Active industry curators listen to every submission and respond within 48 hours.",
       },
       { property: "og:title", content: "The Vault — Submit your music to industry curators" },
       {
         property: "og:description",
         content:
-          "Direct access to executive ears behind today's biggest artists. Real reviews, 48-hour turnaround.",
+          "Direct access to working producers, engineers and visual directors. Real reviews, 48-hour turnaround.",
       },
     ],
   }),
@@ -26,30 +23,40 @@ export const Route = createFileRoute("/")({
 
 const curators = [
   {
-    name: "Marcus Vane",
-    role: "Senior A&R · Interscope",
-    bio: "Alternative rap and synth-wave specialist. Two new signings every quarter.",
-    credits: ["Drake", "SZA", "The Weeknd"],
-    image: curatorMarcus,
+    name: "OGB Youngn",
+    handle: "@ogsbyoung",
+    instagram: "https://www.instagram.com/ogsbyoung/",
+    role: "Producer · Recording Artist",
+    bio: "Independent producer and recording artist with placements across hip-hop and R&B. Active ear for melodic rap, alt-R&B and anything with a real pocket.",
+    tags: ["Hip-Hop", "R&B", "Melodic Rap"],
+    accent: "from-emerald-400/40 to-teal-500/10",
+    initials: "OG",
     online: true,
   },
   {
-    name: "Elena Kross",
-    role: "Founding Editor · Resident Advisor",
-    bio: "Editorial taste-maker for club-oriented productions and experimental electronic.",
-    credits: ["Aphex Twin", "Peggy Gou", "Four Tet"],
-    image: curatorElena,
+    name: "Hazytrax",
+    handle: "@hazytrax",
+    instagram: "https://www.instagram.com/hazytrax",
+    role: "Producer · Beatmaker",
+    bio: "Beatmaker and trap producer behind underground placements and a steady drop of original instrumentals. Listening for vocalists who can ride heavy 808s and dark melodies.",
+    tags: ["Trap", "Drill", "Underground"],
+    accent: "from-emerald-300/40 to-emerald-700/10",
+    initials: "HZ",
     online: true,
   },
   {
-    name: "Julian Thorne",
-    role: "Head of Playlist Strategy",
-    bio: "Curating the global Top 50 and New Music Friday. Hunting the next breakout.",
-    credits: ["Kendrick Lamar", "Rosalía", "Tyler, The Creator"],
-    image: curatorJulian,
-    online: false,
+    name: "Akeef Studios",
+    handle: "@akeefstudios",
+    instagram: "https://www.instagram.com/akeefstudios",
+    role: "Director · Visuals & A&R",
+    bio: "Music video director and creative shop behind visuals for rising rap artists (Ync Jay, Lil Nate and more). Reviews submissions through a visual-first lens — songs that already see themselves on screen.",
+    tags: ["Rap", "Visuals", "Artist Dev"],
+    accent: "from-teal-300/40 to-emerald-600/10",
+    initials: "AK",
+    online: true,
   },
 ];
+
 
 const genres = [
   "Electronic / Club",
