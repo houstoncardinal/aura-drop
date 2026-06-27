@@ -89,10 +89,14 @@ function VaultPage() {
     <main className="relative min-h-screen overflow-hidden bg-zinc-950 text-zinc-100">
       {/* Atmospheric background */}
       <div className="pointer-events-none fixed inset-0 z-0">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,#0a1a14_0%,#050a08_55%,#020503_100%)]" />
+        <div className="grid-pattern animate-drift absolute inset-0" />
+        <div className="dot-pattern absolute inset-0 opacity-60" />
         <div className="noise-bg absolute inset-0" />
-        <div className="absolute -top-1/4 -left-1/4 h-[60vmax] w-[60vmax] animate-aurora rounded-full bg-[radial-gradient(circle_at_center,rgba(52,211,153,0.18),transparent_60%)] blur-3xl" />
-        <div className="absolute -bottom-1/4 -right-1/4 h-[55vmax] w-[55vmax] animate-aurora-2 rounded-full bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.12),transparent_60%)] blur-3xl" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_0%,#09090b_85%)]" />
+        <div className="absolute -top-1/4 -left-1/4 h-[60vmax] w-[60vmax] animate-aurora rounded-full bg-[radial-gradient(circle_at_center,rgba(52,211,153,0.22),transparent_60%)] blur-3xl" />
+        <div className="absolute -bottom-1/4 -right-1/4 h-[55vmax] w-[55vmax] animate-aurora-2 rounded-full bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.18),transparent_60%)] blur-3xl" />
+        <div className="absolute top-1/3 left-1/2 h-[40vmax] w-[40vmax] -translate-x-1/2 animate-aurora rounded-full bg-[radial-gradient(circle_at_center,rgba(110,231,183,0.10),transparent_65%)] blur-3xl" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_0%,rgba(5,10,8,0.6)_70%,#050a08_100%)]" />
       </div>
 
       <Nav />
