@@ -1,8 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useRef, useState, type FormEvent } from "react";
-import curatorMarcus from "@/assets/curator-marcus.jpg";
-import curatorElena from "@/assets/curator-elena.jpg";
-import curatorJulian from "@/assets/curator-julian.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -11,13 +8,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Drop your track into The Vault. Curators behind Drake, SZA, The Weeknd and more review every submission within 48 hours.",
+          "Drop your track into The Vault. Active industry curators listen to every submission and respond within 48 hours.",
       },
       { property: "og:title", content: "The Vault — Submit your music to industry curators" },
       {
         property: "og:description",
         content:
-          "Direct access to executive ears behind today's biggest artists. Real reviews, 48-hour turnaround.",
+          "Direct access to working producers, engineers and visual directors. Real reviews, 48-hour turnaround.",
       },
     ],
   }),
@@ -26,30 +23,40 @@ export const Route = createFileRoute("/")({
 
 const curators = [
   {
-    name: "Marcus Vane",
-    role: "Senior A&R · Interscope",
-    bio: "Alternative rap and synth-wave specialist. Two new signings every quarter.",
-    credits: ["Drake", "SZA", "The Weeknd"],
-    image: curatorMarcus,
+    name: "OGB Youngn",
+    handle: "@ogsbyoung",
+    instagram: "https://www.instagram.com/ogsbyoung/",
+    role: "Producer · Recording Artist",
+    bio: "Independent producer and recording artist with placements across hip-hop and R&B. Active ear for melodic rap, alt-R&B and anything with a real pocket.",
+    tags: ["Hip-Hop", "R&B", "Melodic Rap"],
+    accent: "from-emerald-400/40 to-teal-500/10",
+    initials: "OG",
     online: true,
   },
   {
-    name: "Elena Kross",
-    role: "Founding Editor · Resident Advisor",
-    bio: "Editorial taste-maker for club-oriented productions and experimental electronic.",
-    credits: ["Aphex Twin", "Peggy Gou", "Four Tet"],
-    image: curatorElena,
+    name: "Hazytrax",
+    handle: "@hazytrax",
+    instagram: "https://www.instagram.com/hazytrax",
+    role: "Producer · Beatmaker",
+    bio: "Beatmaker and trap producer behind underground placements and a steady drop of original instrumentals. Listening for vocalists who can ride heavy 808s and dark melodies.",
+    tags: ["Trap", "Drill", "Underground"],
+    accent: "from-emerald-300/40 to-emerald-700/10",
+    initials: "HZ",
     online: true,
   },
   {
-    name: "Julian Thorne",
-    role: "Head of Playlist Strategy",
-    bio: "Curating the global Top 50 and New Music Friday. Hunting the next breakout.",
-    credits: ["Kendrick Lamar", "Rosalía", "Tyler, The Creator"],
-    image: curatorJulian,
-    online: false,
+    name: "Akeef Studios",
+    handle: "@akeefstudios",
+    instagram: "https://www.instagram.com/akeefstudios",
+    role: "Director · Visuals & A&R",
+    bio: "Music video director and creative shop behind visuals for rising rap artists (Ync Jay, Lil Nate and more). Reviews submissions through a visual-first lens — songs that already see themselves on screen.",
+    tags: ["Rap", "Visuals", "Artist Dev"],
+    accent: "from-teal-300/40 to-emerald-600/10",
+    initials: "AK",
+    online: true,
   },
 ];
+
 
 const genres = [
   "Electronic / Club",
@@ -652,14 +659,14 @@ function CuratorCard({ c, idx }: { c: (typeof curators)[number]; idx: number }) 
 
       <div className="relative flex items-start gap-4">
         <div className="relative shrink-0">
-          <img
-            src={c.image}
-            alt={`Portrait of ${c.name}`}
-            width={64}
-            height={64}
-            loading="lazy"
-            className="size-16 rounded-2xl object-cover ring-1 ring-zinc-800 grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:ring-accent/40"
-          />
+          <div
+            aria-hidden
+            className={`flex size-16 items-center justify-center rounded-2xl bg-gradient-to-br ${c.accent} ring-1 ring-zinc-800 transition-all duration-500 group-hover:ring-accent/40`}
+          >
+            <span className="font-display text-lg font-semibold tracking-tight text-zinc-50">
+              {c.initials}
+            </span>
+          </div>
           {c.online && (
             <span className="absolute -bottom-1 -right-1 flex size-4 items-center justify-center rounded-full bg-zinc-950 ring-2 ring-zinc-950">
               <span className="size-2 rounded-full bg-accent animate-pulse-ring" />
@@ -671,29 +678,46 @@ function CuratorCard({ c, idx }: { c: (typeof curators)[number]; idx: number }) 
             {c.name}
           </h3>
           <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">{c.role}</p>
+          <a
+            href={c.instagram}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="mt-1 inline-flex w-fit items-center gap-1 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500 transition-colors hover:text-zinc-200"
+          >
+            {c.handle} ↗
+          </a>
         </div>
       </div>
 
       <p className="relative text-sm leading-relaxed text-zinc-400">{c.bio}</p>
 
-      <div className="relative flex flex-col gap-2 border-t border-zinc-800/60 pt-4">
-        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">
-          Notable credits
-        </span>
+      <div className="relative flex flex-col gap-3 border-t border-zinc-800/60 pt-4">
         <div className="flex flex-wrap gap-1.5">
-          {c.credits.map((credit) => (
+          {c.tags.map((tag) => (
             <span
-              key={credit}
+              key={tag}
               className="rounded-full border border-zinc-800 bg-zinc-950/60 px-2.5 py-1 text-[10px] font-medium text-zinc-200 transition-colors group-hover:border-zinc-700"
             >
-              {credit}
+              {tag}
             </span>
           ))}
         </div>
+        <a
+          href={c.instagram}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="group/btn inline-flex items-center justify-between rounded-xl border border-zinc-800 bg-zinc-950/60 px-4 py-2.5 text-xs font-medium text-zinc-200 transition-all hover:border-accent/40 hover:bg-accent/5 hover:text-accent"
+        >
+          <span className="font-mono text-[10px] uppercase tracking-[0.18em]">
+            Listening now on Instagram
+          </span>
+          <span className="transition-transform group-hover/btn:translate-x-0.5">→</span>
+        </a>
       </div>
     </article>
   );
 }
+
 
 /* ─────────────────  HOW IT WORKS  ───────────────── */
 
