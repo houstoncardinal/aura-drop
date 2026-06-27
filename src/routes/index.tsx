@@ -659,14 +659,14 @@ function CuratorCard({ c, idx }: { c: (typeof curators)[number]; idx: number }) 
 
       <div className="relative flex items-start gap-4">
         <div className="relative shrink-0">
-          <img
-            src={c.image}
-            alt={`Portrait of ${c.name}`}
-            width={64}
-            height={64}
-            loading="lazy"
-            className="size-16 rounded-2xl object-cover ring-1 ring-zinc-800 grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:ring-accent/40"
-          />
+          <div
+            aria-hidden
+            className={`flex size-16 items-center justify-center rounded-2xl bg-gradient-to-br ${c.accent} ring-1 ring-zinc-800 transition-all duration-500 group-hover:ring-accent/40`}
+          >
+            <span className="font-display text-lg font-semibold tracking-tight text-zinc-50">
+              {c.initials}
+            </span>
+          </div>
           {c.online && (
             <span className="absolute -bottom-1 -right-1 flex size-4 items-center justify-center rounded-full bg-zinc-950 ring-2 ring-zinc-950">
               <span className="size-2 rounded-full bg-accent animate-pulse-ring" />
@@ -678,29 +678,46 @@ function CuratorCard({ c, idx }: { c: (typeof curators)[number]; idx: number }) 
             {c.name}
           </h3>
           <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">{c.role}</p>
+          <a
+            href={c.instagram}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="mt-1 inline-flex w-fit items-center gap-1 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500 transition-colors hover:text-zinc-200"
+          >
+            {c.handle} ↗
+          </a>
         </div>
       </div>
 
       <p className="relative text-sm leading-relaxed text-zinc-400">{c.bio}</p>
 
-      <div className="relative flex flex-col gap-2 border-t border-zinc-800/60 pt-4">
-        <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">
-          Notable credits
-        </span>
+      <div className="relative flex flex-col gap-3 border-t border-zinc-800/60 pt-4">
         <div className="flex flex-wrap gap-1.5">
-          {c.credits.map((credit) => (
+          {c.tags.map((tag) => (
             <span
-              key={credit}
+              key={tag}
               className="rounded-full border border-zinc-800 bg-zinc-950/60 px-2.5 py-1 text-[10px] font-medium text-zinc-200 transition-colors group-hover:border-zinc-700"
             >
-              {credit}
+              {tag}
             </span>
           ))}
         </div>
+        <a
+          href={c.instagram}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="group/btn inline-flex items-center justify-between rounded-xl border border-zinc-800 bg-zinc-950/60 px-4 py-2.5 text-xs font-medium text-zinc-200 transition-all hover:border-accent/40 hover:bg-accent/5 hover:text-accent"
+        >
+          <span className="font-mono text-[10px] uppercase tracking-[0.18em]">
+            Listening now on Instagram
+          </span>
+          <span className="transition-transform group-hover/btn:translate-x-0.5">→</span>
+        </a>
       </div>
     </article>
   );
 }
+
 
 /* ─────────────────  HOW IT WORKS  ───────────────── */
 
