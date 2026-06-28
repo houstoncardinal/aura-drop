@@ -9,38 +9,193 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
+import { Route as DashboardSubmissionsRouteImport } from './routes/dashboard/submissions'
+import { Route as DashboardReleaseRouteImport } from './routes/dashboard/release'
+import { Route as DashboardLyricsRouteImport } from './routes/dashboard/lyrics'
+import { Route as DashboardBioRouteImport } from './routes/dashboard/bio'
+import { Route as AuthCallbackRouteImport } from './routes/auth/callback'
 
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardSubmissionsRoute = DashboardSubmissionsRouteImport.update({
+  id: '/submissions',
+  path: '/submissions',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardReleaseRoute = DashboardReleaseRouteImport.update({
+  id: '/release',
+  path: '/release',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardLyricsRoute = DashboardLyricsRouteImport.update({
+  id: '/lyrics',
+  path: '/lyrics',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardBioRoute = DashboardBioRouteImport.update({
+  id: '/bio',
+  path: '/bio',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const AuthCallbackRoute = AuthCallbackRouteImport.update({
+  id: '/auth/callback',
+  path: '/auth/callback',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/login': typeof LoginRoute
+  '/services': typeof ServicesRoute
+  '/signup': typeof SignupRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/dashboard/bio': typeof DashboardBioRoute
+  '/dashboard/lyrics': typeof DashboardLyricsRoute
+  '/dashboard/release': typeof DashboardReleaseRoute
+  '/dashboard/submissions': typeof DashboardSubmissionsRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/services': typeof ServicesRoute
+  '/signup': typeof SignupRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/dashboard/bio': typeof DashboardBioRoute
+  '/dashboard/lyrics': typeof DashboardLyricsRoute
+  '/dashboard/release': typeof DashboardReleaseRoute
+  '/dashboard/submissions': typeof DashboardSubmissionsRoute
+  '/dashboard': typeof DashboardIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRouteWithChildren
+  '/login': typeof LoginRoute
+  '/services': typeof ServicesRoute
+  '/signup': typeof SignupRoute
+  '/auth/callback': typeof AuthCallbackRoute
+  '/dashboard/bio': typeof DashboardBioRoute
+  '/dashboard/lyrics': typeof DashboardLyricsRoute
+  '/dashboard/release': typeof DashboardReleaseRoute
+  '/dashboard/submissions': typeof DashboardSubmissionsRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/login'
+    | '/services'
+    | '/signup'
+    | '/auth/callback'
+    | '/dashboard/bio'
+    | '/dashboard/lyrics'
+    | '/dashboard/release'
+    | '/dashboard/submissions'
+    | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/login'
+    | '/services'
+    | '/signup'
+    | '/auth/callback'
+    | '/dashboard/bio'
+    | '/dashboard/lyrics'
+    | '/dashboard/release'
+    | '/dashboard/submissions'
+    | '/dashboard'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/login'
+    | '/services'
+    | '/signup'
+    | '/auth/callback'
+    | '/dashboard/bio'
+    | '/dashboard/lyrics'
+    | '/dashboard/release'
+    | '/dashboard/submissions'
+    | '/dashboard/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DashboardRoute: typeof DashboardRouteWithChildren
+  LoginRoute: typeof LoginRoute
+  ServicesRoute: typeof ServicesRoute
+  SignupRoute: typeof SignupRoute
+  AuthCallbackRoute: typeof AuthCallbackRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,12 +203,89 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/submissions': {
+      id: '/dashboard/submissions'
+      path: '/submissions'
+      fullPath: '/dashboard/submissions'
+      preLoaderRoute: typeof DashboardSubmissionsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/release': {
+      id: '/dashboard/release'
+      path: '/release'
+      fullPath: '/dashboard/release'
+      preLoaderRoute: typeof DashboardReleaseRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/lyrics': {
+      id: '/dashboard/lyrics'
+      path: '/lyrics'
+      fullPath: '/dashboard/lyrics'
+      preLoaderRoute: typeof DashboardLyricsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/bio': {
+      id: '/dashboard/bio'
+      path: '/bio'
+      fullPath: '/dashboard/bio'
+      preLoaderRoute: typeof DashboardBioRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/auth/callback': {
+      id: '/auth/callback'
+      path: '/auth/callback'
+      fullPath: '/auth/callback'
+      preLoaderRoute: typeof AuthCallbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface DashboardRouteChildren {
+  DashboardBioRoute: typeof DashboardBioRoute
+  DashboardLyricsRoute: typeof DashboardLyricsRoute
+  DashboardReleaseRoute: typeof DashboardReleaseRoute
+  DashboardSubmissionsRoute: typeof DashboardSubmissionsRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+}
+
+const DashboardRouteChildren: DashboardRouteChildren = {
+  DashboardBioRoute: DashboardBioRoute,
+  DashboardLyricsRoute: DashboardLyricsRoute,
+  DashboardReleaseRoute: DashboardReleaseRoute,
+  DashboardSubmissionsRoute: DashboardSubmissionsRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+}
+
+const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
+  DashboardRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DashboardRoute: DashboardRouteWithChildren,
+  LoginRoute: LoginRoute,
+  ServicesRoute: ServicesRoute,
+  SignupRoute: SignupRoute,
+  AuthCallbackRoute: AuthCallbackRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

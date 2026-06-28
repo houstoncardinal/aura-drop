@@ -8,6 +8,9 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { AuthProvider } from "../lib/auth";
+import { EditorProvider, useEditor } from "../lib/editor";
+import { PageEditor } from "../components/page-editor";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -119,8 +122,22 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <AuthProvider>
+        <EditorProvider>
+          <EditShell />
+        </EditorProvider>
+      </AuthProvider>
     </QueryClientProvider>
+  );
+}
+
+// Adds top padding when the editor bar is visible so page content isn't hidden under it
+function EditShell() {
+  const { isEditing } = useEditor();
+  return (
+    <div className={isEditing ? "pt-[46px]" : ""}>
+      <PageEditor />
+      <Outlet />
+    </div>
   );
 }
